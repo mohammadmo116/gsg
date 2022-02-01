@@ -43,7 +43,7 @@ class FileController extends Controller
     {
         $request->validate([
 
-            'File' => 'required|file|mimes:jpg|max:500'
+            'File' => 'required|file|max:500'
 
          ]);
 
