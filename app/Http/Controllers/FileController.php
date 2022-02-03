@@ -81,9 +81,9 @@ class FileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($code)
+    public function show(File $file)
     {
-        $file=File::wherecode($code)->firstOrFail();
+        //$file=File::wherecode($files)->firstOrFail();
 
         $filepath='storage/'.$file->file;
 

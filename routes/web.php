@@ -17,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [LoginController::class,'index']);
-Route::resource('bitlinks', LinkController::class);
-Route::resource('bitfiles', FileController::class);
+Route::resource('bitlinks', LinkController::class)->parameter('bitlinks','link:code');;
+Route::resource('bitfiles', FileController::class)->parameter('bitfiles','file:code');

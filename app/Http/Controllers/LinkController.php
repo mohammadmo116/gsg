@@ -68,10 +68,10 @@ class LinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($code)
+    public function show(Link $link)
     {
 
-        $link=Link::wherecode($code)->firstOrFail();
+        // $link=Link::wherecode($code)->firstOrFail();
         return redirect( $link->Link);
 
     }
