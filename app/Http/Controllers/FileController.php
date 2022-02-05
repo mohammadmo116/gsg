@@ -101,9 +101,10 @@ class FileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(File $file)
     {
 
+        return Response::file(storage_path('app').'/'.$file->file);
 
     }
 
@@ -114,9 +115,9 @@ class FileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(File $file)
+    public function update($id)
     {
-        return Response::file(storage_path('app').'/'.$file->file);
+
     }
 
     /**
