@@ -18,8 +18,8 @@ class FileController extends Controller
      */
     public function index()
     {
-        $Links = File::all();
-        return view('links',compact('Links'));
+        $Files = File::all();
+        return view('links',compact('Files'));
 
     }
 
@@ -55,7 +55,7 @@ class FileController extends Controller
 
         if($file->isValid()){
 
-        $data['file']=$file->store('files',['disk'=>'public']);
+        $data['file']=$file->store('files',['disk'=>'local']);
 
         $data['code']=Str::random(6);
 
@@ -85,11 +85,11 @@ class FileController extends Controller
     {
         //$file=File::wherecode($files)->firstOrFail();
 
-        $filepath='storage/'.$file->file;
+        $filepath=$file->file;
 
         // return Storage::download(public_path().'/storage/files/jj13S51vlXJzvo7GF6t0A2n2ec7qjiRVFN1LrI0W.jpg',uniqid());
 
-        return Response::download(public_path().'/'.$filepath,uniqid());
+        return Response::download(storage_path('app').'/'.$filepath,uniqid());
 
         // return Response::download('http://localhost:8000/storage/files/jj13S51vlXJzvo7GF6t0A2n2ec7qjiRVFN1LrI0W.jpg',uniqid());
 

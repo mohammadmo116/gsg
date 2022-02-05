@@ -11,28 +11,36 @@
             <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Link/image</th>
+                    @if (isset($Links))
+                    <th scope="col">Link</th>
+                    @endif
                     <th scope="col">code</th>
                   </tr>
                 </thead>
                 <tbody>
 
 
-                    @foreach ($Links as $Link)
-                    <tr>
 
-                        <td>{{$Link->id}}</td>
-                        @if (@isset($Link->file))
 
-                        <td> <a href={{ route('bitfiles.show', $Link->code) }}><img src={{Storage::disk('public')->url($Link->file)}} height='60'>  </a> </td>
-                        <td> <a href={{ route('bitfiles.show', $Link->code) }}>http://localhost:8000/bitfiles/{{$Link->code}}</a></td>
+                        @if (@isset($Files))
+                        @foreach ($Files as $file)
+                        <tr>
+                        <td>{{$file->id}}</td>
+                        <td> <a href={{ route('bitfiles.show', $file->code) }}>http://localhost:8000/bitfiles/{{$file->code}}</a></td>
+                        </tr>
+                        @endforeach
                         @else
+                        @foreach ($Links as $Link)
+                        <tr>
+                        <td>{{$Link->id}}</td>
                         <td><a href={{$Link->Link}}>{{$Link->Link}}</a></td>
                         <td> <a href={{$Link->Link}}>http://localhost:8000/bitlinks/{{$Link->code}}</a></td>
-
+                        </tr>
+                        @endforeach
                         @endif
-                      </tr>
-                    @endforeach
+
+
+
 
 
 
