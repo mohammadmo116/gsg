@@ -85,11 +85,10 @@ class FileController extends Controller
     {
         //$file=File::wherecode($files)->firstOrFail();
 
-        $filepath=$file->file;
 
         // return Storage::download(public_path().'/storage/files/jj13S51vlXJzvo7GF6t0A2n2ec7qjiRVFN1LrI0W.jpg',uniqid());
 
-        return Response::download(storage_path('app').'/'.$filepath,uniqid());
+        return Response::download(storage_path('app').'/'.$file->file,uniqid());
 
         // return Response::download('http://localhost:8000/storage/files/jj13S51vlXJzvo7GF6t0A2n2ec7qjiRVFN1LrI0W.jpg',uniqid());
 
@@ -102,9 +101,10 @@ class FileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+
+
     }
 
     /**
@@ -114,9 +114,9 @@ class FileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(File $file)
     {
-        //
+        return Response::file(storage_path('app').'/'.$file->file);
     }
 
     /**

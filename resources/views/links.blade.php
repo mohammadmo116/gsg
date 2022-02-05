@@ -11,9 +11,9 @@
             <thead>
                   <tr>
                     <th scope="col">#</th>
-                    @if (isset($Links))
+
                     <th scope="col">Link</th>
-                    @endif
+
                     <th scope="col">code</th>
                   </tr>
                 </thead>
@@ -26,6 +26,7 @@
                         @foreach ($Files as $file)
                         <tr>
                         <td>{{$file->id}}</td>
+                        <td><a href={{ route('bitfiles.show', $file->code) }}><img  height=60  src={{ route('bitfiles.update', $file->code)}}></a></td>
                         <td> <a href={{ route('bitfiles.show', $file->code) }}>http://localhost:8000/bitfiles/{{$file->code}}</a></td>
                         </tr>
                         @endforeach
